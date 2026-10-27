@@ -1,0 +1,302 @@
+/* Navbar Floating Rail Styles */
+.nav-rail {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  bottom: var(--space-4);
+  width: 72px;
+  /* collapsed icon-only width */
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3) 0;
+  transition: width var(--transition-smooth), background-color var(--transition-smooth);
+  z-index: 100;
+  overflow: hidden;
+  box-shadow: var(--card-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Hover expansion */
+.nav-rail:hover {
+  width: 240px;
+  background: rgba(30, 26, 43, 0.85);
+  /* Slightly darker on expand for readability */
+  box-shadow: var(--card-shadow), var(--glow-shadow-lilac);
+}
+
+/* Brand Logo */
+.nav-brand {
+  padding: 0 var(--space-3);
+  margin-bottom: var(--space-4);
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--highlight-lilac));
+  border-radius: var(--radius-md);
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+  position: relative;
+  text-decoration: none;
+}
+
+.brand-logo .logo-glow {
+  position: absolute;
+  inset: -4px;
+  background: inherit;
+  filter: blur(12px);
+  opacity: 0.6;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+/* Nav Menu Items Container */
+.nav-menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.nav-menu::-webkit-scrollbar {
+  display: none;
+}
+
+/* Base Nav Item */
+.nav-item {
+  position: relative;
+  padding: 0 var(--space-2);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 12px var(--space-2);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  width: 100%;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+/* Icons */
+.nav-link .icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-smooth), color var(--transition-fast);
+}
+
+.nav-link .icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Micro-rotation on hover */
+.nav-item:hover .icon {
+  transform: rotate(-10deg) scale(1.1);
+  color: var(--text-main);
+}
+
+/* Labels */
+.nav-link .label {
+  white-space: nowrap;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+}
+
+.nav-rail:hover .nav-link .label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hover States */
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+}
+
+/* Active State */
+.nav-item.active .nav-link {
+  color: var(--accent-teal);
+  background: rgba(0, 209, 178, 0.1);
+}
+
+.nav-item.active .icon {
+  color: var(--accent-teal);
+  filter: drop-shadow(0 0 8px var(--accent-teal-glow));
+}
+
+/* Glowing active indicator line */
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 4px;
+  background: var(--accent-teal);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  box-shadow: 0 0 10px var(--accent-teal);
+  animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    opacity: 0.7;
+    box-shadow: 0 0 5px var(--accent-teal);
+  }
+
+  to {
+    opacity: 1;
+    box-shadow: 0 0 15px var(--accent-teal);
+  }
+}
+
+/* Dividers and Spacers */
+.nav-divider {
+  height: 1px;
+  background: var(--glass-border);
+  margin: var(--space-2) var(--space-3);
+  flex-shrink: 0;
+}
+
+.nav-spacer {
+  flex: 1;
+  min-height: var(--space-3);
+}
+
+/* User Profile Block */
+.nav-user-profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 12px var(--space-3);
+  margin: 0 var(--space-2) var(--space-2);
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+}
+
+.nav-user-profile .avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--highlight-lilac), var(--accent-teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 0 10px rgba(155, 93, 229, 0.4);
+}
+
+.nav-user-profile .username {
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.nav-rail:hover .nav-user-profile .username {
+  opacity: 1;
+}
+
+/* ----------------------------------
+   Mobile Responsive: Bottom Dock
+----------------------------------- */
+@media (max-width: 768px) {
+  .nav-rail {
+    top: auto;
+    left: var(--space-2);
+    right: var(--space-2);
+    bottom: var(--space-2);
+    width: auto !important;
+    height: 64px;
+    flex-direction: row;
+    padding: 0 var(--space-2);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Hide elements on mobile dock */
+  .nav-brand,
+  .nav-divider,
+  .nav-spacer,
+  .nav-user-profile,
+  .nav-link .label {
+    display: none !important;
+  }
+
+  .nav-menu {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav-item {
+    padding: 0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-link {
+    width: auto;
+    padding: var(--space-2);
+    border-radius: 50%;
+  }
+
+  /* Bottom indicator for active state */
+  .nav-item.active::before {
+    left: 50%;
+    top: auto;
+    bottom: -4px;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+  }
+
+  /* Remove rotation on mobile, just scale */
+  .nav-item:hover .icon {
+    transform: translateY(-4px) scale(1.1);
+  }
+}

@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Color Palette - Clean Light Theme */
+  --primary-bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
+  
+  --accent-teal: #0284c7;
+  --accent-teal-glow: rgba(2, 132, 199, 0.2);
+  --accent-sand: #f1f5f9;
+  
+  --highlight-lilac: #7c3aed;
+  --highlight-lilac-glow: rgba(124, 58, 237, 0.2);
+  
+  /* Text Colors */
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dark: #0f172a;
+
+  /* Spacing Scale (8px system) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 9999px;
+
+  /* Shadows, Blurs & Glows */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: #e2e8f0;
+  --glass-border-hover: #cbd5e1;
+  --glow-shadow-teal: 0 0 16px rgba(2, 132, 199, 0.15);
+  --glow-shadow-lilac: 0 0 16px rgba(124, 58, 237, 0.15);
+  --inner-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  --card-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-hero: 700 48px/1.2 var(--font-family);
+  --font-section: 600 28px/1.3 var(--font-family);
+  --font-card: 500 18px/1.4 var(--font-family);
+  --font-body: 400 16px/1.5 var(--font-family);
+  --font-caption: 400 13px/1.5 var(--font-family);
+
+  /* Transition Timings */
+  --transition-fast: 150ms ease;
+  --transition-smooth: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--primary-bg);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Basic Reset for forms and buttons */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+a {
+  color: var(--accent-teal);
+  text-decoration: none;
+  transition: all var(--transition-smooth);
+}
+
+a:hover {
+  text-shadow: 0 0 8px var(--accent-teal-glow);
+}
